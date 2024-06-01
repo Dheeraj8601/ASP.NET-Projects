@@ -1,0 +1,23 @@
+@page
+@model ASP.Pages.Customers.Delete
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="mx-auto rounded border p-4" style="width: 400px">
+    <h2 class="text-center mb-3">Delete Customer</h2>
+    <hr/>
+    <p>Are you sure want to delete this customer?</p>
+    <p>Customer Id = @Request.Query["id"]</p>
+    <hr/>
+    <form method="post">
+         <div class="row">
+                <div class="offset-sm-4 col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+                <div class="col-sm-4 d-grid">
+                    <a href="/Customers/Index" class="btn btn-outline-primary" role="button">Cancel</a>
+                </div>
+            </div>
+    </form>
+</div>

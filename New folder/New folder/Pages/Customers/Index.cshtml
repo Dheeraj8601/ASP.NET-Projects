@@ -1,0 +1,38 @@
+@page
+@model ASP.Pages.Customers.Index
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 class="text-center mb-3">List of Customers</h2>
+<a class="btn btn-primary mb-3" href="/Customers/Create">New Customer</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Company</th>
+            <th>Created At</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var Customer in Model.customersList){
+            <tr>
+            <td>@Customer.Id</td>
+            <td>@(Customer.Firstname + " "+Customer.Lastname)</td>
+            <td>@Customer.Email</td>
+            <td>@Customer.Phone</td>
+            <td>@Customer.Company</td>
+            <td>@Customer.CreatedAt</td>
+            <td style="white-space:nowrap">
+                <a class="btn btn-primary btn-sm" href="/Customers/Edit?id=@Customer.Id">Edit</a>
+                <a class="btn btn-danger btn-sm" href="/Customers/Delete?id=@Customer.Id">Delete</a>
+            </td>
+        </tr>
+                    }
+    </tbody>
+</table>

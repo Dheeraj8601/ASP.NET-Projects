@@ -1,0 +1,39 @@
+@model IEnumerable<ASP.Models.CustomerInfo>
+@{
+    ViewData["Title"] = "Customer List";
+}
+
+
+<h2>Customer List</h2>
+<a href="@Url.Action("Create")" class="btn btn-primary">New Customer</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Company</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Id</td>
+                <td>@customer.Firstname @customer.Lastname</td>
+                <td>@customer.Email</td>
+                <td>@customer.Phone</td>
+                <td>@customer.Company</td>
+                <td>@customer.CreatedAt.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = customer.Id })" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", new { id = customer.Id })" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
